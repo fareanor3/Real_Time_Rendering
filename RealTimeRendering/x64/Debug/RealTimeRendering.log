@@ -1,0 +1,18 @@
+﻿  Camera.c
+  main.c
+C:\Users\thiba\Desktop\RealTimeRendering\RealTimeRendering_Basecode\RealTimeRendering\main.c(55,10): warning C4101: 'meshCenter' : variable locale non référencée
+  Material.c
+  Matrix.c
+  Mesh.c
+  Object.c
+  Graphics.c
+  Renderer.c
+  Scene.c
+  Settings.c
+  Shader.c
+  Tools.c
+  Timer.c
+  Vector.c
+  Window.c
+  Génération de code en cours...
+  RealTimeRendering.vcxproj -> C:\Users\thiba\Desktop\RealTimeRendering\RealTimeRendering_Basecode\Bin\RealTimeRendering.exe

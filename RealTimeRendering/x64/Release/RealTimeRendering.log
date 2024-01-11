@@ -1,0 +1,7 @@
+﻿cl : ligne de commande  warning D9025: substitution de '/sdl' par '/GS-'
+  Material.c
+  Génération de code en cours
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  All 129 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Fin de la génération du code
+  RealTimeRendering.vcxproj -> D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\Bin\RealTimeRendering.exe
