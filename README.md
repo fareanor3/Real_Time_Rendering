@@ -8,7 +8,7 @@ All, whithout the use of any external libraries like OpenGL or DirectX.
 
 ## Images
 
-- ![Image]()
+- ![Image](https://github.com/fareanor3/Real_Time_Rendering/blob/630cb2ebfc0e0624ae7770502386cf66a00015dc/2024-01-11%2016_37_58-Real-Time%20Rendering.png)
 
 ## Buttons
 
