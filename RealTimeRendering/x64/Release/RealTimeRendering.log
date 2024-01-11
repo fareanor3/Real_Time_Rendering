@@ -1,3 +1,31 @@
 ﻿cl : ligne de commande  warning D9025: substitution de '/sdl' par '/GS-'
+  Camera.c
   main.c
-D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\main.c(14,10): error C1083: Impossible d'ouvrir le fichier include : 'SDL_mixer.h' : No such file or directory
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\main.c(64,10): warning C4101: 'meshCenter' : variable locale non référencée
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\main.c(96,10): warning C4101: 'maxLight' : variable locale non référencée
+  Material.c
+  Matrix.c
+  Mesh.c
+  Object.c
+  Graphics.c
+  Renderer.c
+  Scene.c
+  Settings.c
+  Shader.c
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(51,10): warning C4101: 'edge1' : variable locale non référencée
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(52,10): warning C4101: 'edge2' : variable locale non référencée
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(296,31): warning C4020: 'Vec3_Abs' : paramètres réels trop nombreux
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(262,10): warning C4101: 'reflect' : variable locale non référencée
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(362,39): warning C4020: 'Vec3_Abs' : paramètres réels trop nombreux
+  Tools.c
+  Timer.c
+  Vector.c
+  Window.c
+  Analyse du code en cours pour C/C++...
+  Génération de code en cours
+  Previous IPDB not found, fall back to full compilation.
+  All 129 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Fin de la génération du code
+  RealTimeRendering.vcxproj -> D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\Bin\RealTimeRendering.exe
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Graphics.c(45): warning C6993: L'analyse du code ne tient pas compte des constructions OpenMP ; analyse du code monothread.
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Renderer.c(76): warning C6001: Utilisation de la mémoire non initialisée '*zBuffer'.

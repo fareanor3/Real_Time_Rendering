@@ -1,15 +1,16 @@
 ﻿#include "window.h"
 #include "Renderer.h"
 
-Window* Window_New()
+Window *Window_New()
 {
-    Window* window = NULL;
+    Window *window = NULL;
     Renderer *renderer = NULL;
     SDL_Renderer *rendererSDL = NULL;
     SDL_Window *windowSDL = NULL;
 
-    window = (Window*)calloc(1, sizeof(Window));
-    if (!window) goto ERROR_LABEL;
+    window = (Window *)calloc(1, sizeof(Window));
+    if (!window)
+        goto ERROR_LABEL;
 
     int flags = 0;
 #ifdef _FULLSCREEN
@@ -37,11 +38,11 @@ Window* Window_New()
     }
 
     renderer = Renderer_New(rendererSDL);
-    if (!renderer) goto ERROR_LABEL;
+    if (!renderer)
+        goto ERROR_LABEL;
 
     window->m_renderer = renderer;
     window->m_rendererSDL = rendererSDL;
-
 
     int exitStatus = SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
     if (exitStatus == SDL_FALSE)
@@ -62,9 +63,10 @@ ERROR_LABEL:
     return NULL;
 }
 
-void Window_Free(Window* window)
+void Window_Free(Window *window)
 {
-    if (!window) return;
+    if (!window)
+        return;
 
     if (window->m_renderer)
     {
@@ -82,8 +84,7 @@ void Window_Free(Window* window)
     free(window);
 }
 
-void Window_GetRendererSize(Window* window, int *width, int *height)
+void Window_GetRendererSize(Window *window, int *width, int *height)
 {
     SDL_RenderGetLogicalSize(window->m_rendererSDL, width, height);
 }
-
