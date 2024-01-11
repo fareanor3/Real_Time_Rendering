@@ -27,12 +27,11 @@ VShaderOut VertexShader_Base(VShaderIn *in, VShaderGlobals *globals)
     // Projection du sommet dans le "clip space"
     Vec4 vertexClipSpace = Mat4_MulMV(globals->objToClip, vertex); // OBLIGATOIRE (ne pas modifier)
 
-    // TODO
     // Pour la lumi�re diffuse, il faut transformer la normale dans le rep�re monde
     // Pour le mod�le de Blinn-Phong, il faut calculer la position du sommet
     // dans le r�f�rentiel monde et ajouter l'information au VShaderOut
 
-    // D�finit la sortie du vertex shader
+    // Définit la sortie du vertex shader
     out.clipPos = Vec3_From4(vertexClipSpace);          // OBLIGATOIRE (ne pas modifier)
     out.invDepth = vertexCamSpace.w / vertexCamSpace.z; // OBLIGATOIRE (ne pas modifier)
     out.normal = Vec3_Normalize(Vec3_From4(Mat4_MulMV(globals->objToWorld, normal)));
@@ -53,11 +52,7 @@ VShaderOut VertexShader_Base(VShaderIn *in, VShaderGlobals *globals)
     Vec3 edge2 = Vec3_Sub(v2.worldPos, v0.worldPos);
     Vec2 deltaUV1 = Vec2_Sub(v1.textUV, v0.textUV);
     Vec2 deltaUV2 = Vec2_Sub(v2.textUV, v0.textUV);
-
     float f = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV2.x * deltaUV1.y);
-
-    // out.tangent = Vec3_Normalize(Vec3_Scale(Vec3_Sub(Vec3_Scale(edge1, deltaUV2.y), Vec3_Scale(edge2, deltaUV1.y)), f));
-    // out.bitangent = Vec3_Normalize(Vec3_Scale(Vec3_Sub(Vec3_Scale(edge2, deltaUV1.x), Vec3_Scale(edge1, deltaUV2.x)), f));
 
     return out;
 }
@@ -96,7 +91,6 @@ Vec4 FragmentShader_Base(FShaderIn *in, FShaderGlobals *globals)
     // Recupération de la couleur du pixel dans la texture
     Vec3 albedo = MeshTexture_GetColorVec3(albedoTex, Vec2_Set(u, v));
 
-#if 0
     // Récupère les lumières de la scène
     Vec3 lightVector = Scene_GetLight(globals->scene);
     Vec3 lightColor = Scene_GetLightColor(globals->scene);
@@ -107,35 +101,15 @@ Vec4 FragmentShader_Base(FShaderIn *in, FShaderGlobals *globals)
 
     // Application de la lumière ambiante à l'albedo
     albedo = Vec3_Mul(albedo, ambiant);
+    float lambert = Vec3_Dot(normal, lightVector);
+    lambert = Float_Clamp01(lambert);
+    Vec3 lightScale = Vec3_Scale(lightColor, lambert);
+    Vec3 lightTotal = Vec3_Add(lightScale, ambiant);
+    albedo = Vec3_Mul(albedo, lightTotal);
+    albedo = Vec3_Scale(albedo, 3.0f);
+    // chaufe un peu la couleur
+    albedo = Vec3_Set(albedo.x * 1.25f, albedo.y * 1.15f, albedo.z * 1.15f);
 
-    // TODO
-    // Pour la lumière diffuse, il faut utiliser la normale.
-    // Pour la lumière spéculaire de Blinn-Phong, il faut :
-    // - récupérer l'interpolation de la position dans le monde du pixel ;
-    // - calculer le vecteur de vue, le vecteur moitié
-    // Vous devez donc modifier le vertex shader, puis modifier la fonction
-    // Graphics_RenderTriangle() pour initialiser l'interpolation puis pour
-    // calculer l'interpolation.
-    // Utilisez les macros VEC3_INIT_INTERPOLATION() et VEC3_INTERPOLATE().
-#endif
-
-    //.............................................................................................
-    // Quelques exemples de debug (à décommenter)
-
-    // Debug : couleur unique en RGBA (bleu ESIEA)
-    // return Vec4_Set(0.21f, 0.66f, 0.88f, 1.0f);
-
-    // Debug : coordonnées (uv) de texture
-    // return Vec4_From2(in->textUV, 0.0, 1.0f);
-
-    // Debug : normales
-    // return Vec4_From3(in->normal, 1.0f);
-
-    // Debug : normales V2
-    // return Vec4_From3(Vec3_Scale(Vec3_Add(in->normal, Vec3_One), 0.5f), 1.0f);
-    //.............................................................................................
-
-    // Retourne la couleur (albedo) associée au pixel dans la texture.
     return Vec4_From3(albedo, 1.0f);
 }
 
@@ -184,12 +158,7 @@ Vec4 FragmentShader_CelShading(FShaderIn *in, FShaderGlobals *globals)
     // R�cup�re la normale interpol�e (non normalis�e)
     Vec3 normal = in->normal;
     normal = Vec3_Normalize(normal);
-    Vec3 camera = globals->cameraPos;
 
-    // Application de la lumi�re ambiante � l'albedo
-    // albedo = Vec3_Mul(albedo, ambiant);
-
-    // TODO
     // Pour la lumi�re diffuse, il faut utiliser la normale.
     float lambert = Vec3_Dot(normal, lightVector);
     lambert = Float_Clamp01(lambert);
@@ -203,8 +172,6 @@ Vec4 FragmentShader_CelShading(FShaderIn *in, FShaderGlobals *globals)
 
     Vec3 lightScale = Vec3_Scale(lightColor, lambert);
     Vec3 lightTotal = Vec3_Add(lightScale, ambiant);
-
-    // lightTotal = Vec3_Add(lightTotal, specularColor);
 
     // - r�cup�rer l'interpolation de la position dans le monde du pixel ;
     // - calculer le vecteur de vue, le vecteur moiti�
@@ -230,10 +197,7 @@ Vec4 FragmentShader_CelShading(FShaderIn *in, FShaderGlobals *globals)
     //.............................................................................................
 
     // Retourne la couleur (albedo) associ�e au pixel dans la texture.
-
     albedo = Vec3_Mul(albedo, lightTotal); // Ajout de l'�clairage ambiant et diffuse
-    Vec3 specularScale = Vec3_Set(0.0f, 0.0f, 0.0f);
-    albedo = Vec3_Add(albedo, specularScale); // Ajout de la lumi�re sp�culaire
     return Vec4_From3(albedo, 1.0f);
 }
 
@@ -287,7 +251,6 @@ Vec4 FragmentShader_Blinn_Phong(FShaderIn *in, FShaderGlobals *globals)
     // Application de la lumi�re ambiante � l'albedo
     // albedo = Vec3_Mul(albedo, ambiant);
 
-    // TODO
     // Pour la lumi�re diffuse, il faut utiliser la normale.
     float lambert = Float_Clamp01(Vec3_Dot(normal, lightVector));
     Vec3 lightScale = Vec3_Scale(lightColor, lambert);
@@ -374,7 +337,7 @@ Vec4 FragmentShader_NormalMap(FShaderIn *in, FShaderGlobals *globals)
     }
 
     surfaceNormal = Vec3_Normalize(surfaceNormal);
-    surfaceNormal = Vec3_Scale(surfaceNormal, 1.5f); // intensité de la normal map à ajuster en % (ici 50% bonus)
+    surfaceNormal = Vec3_Scale(surfaceNormal, 1.7f); // intensité de la normal map à ajuster en % (ici 50% bonus)
 
     // Récupération des informations de la scène
     Vec3 lightDirection = Scene_GetLight(globals->scene);
@@ -397,6 +360,7 @@ Vec4 FragmentShader_NormalMap(FShaderIn *in, FShaderGlobals *globals)
     // Application de l'éclairage à la couleur de l'albedo
     Vec3 finalColor = Vec3_Mul(albedoColor, totalLightColor); // Ajout de l'éclairage ambiant et diffuse
     finalColor = Vec3_Abs(finalColor, specularLightColor);    // Ajout de la lumière spéculaire
+    finalColor = Vec3_Scale(finalColor, 0.75f);
 
     return Vec4_From3(finalColor, 1.0f);
 }

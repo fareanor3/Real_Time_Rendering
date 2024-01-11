@@ -153,7 +153,7 @@ Mat4 Mat4_CofactorMatrix(Mat4 mat)
     return returnMat;
 }
 
-// TODO : Algorthme de Laplace
+// Algorthme de Laplace
 float Mat4_Det(Mat4 mat)
 {
     float det = 0;
