@@ -1,0 +1,40 @@
+﻿  Camera.c
+  Graphics.c
+  Material.c
+  Matrix.c
+  Mesh.c
+  Object.c
+  Renderer.c
+  Scene.c
+  Settings.c
+  Shader.c
+  Timer.c
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(51,10): warning C4101: 'edge1' : variable locale non référencée
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(52,10): warning C4101: 'edge2' : variable locale non référencée
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(166,23): warning C4244: 'fonction' : conversion de 'float' en 'int', perte possible de données
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(166,27): warning C4244: 'fonction' : conversion de 'float' en 'int', perte possible de données
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(167,23): warning C4244: 'fonction' : conversion de 'float' en 'int', perte possible de données
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(167,27): warning C4244: 'fonction' : conversion de 'float' en 'int', perte possible de données
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(170,23): warning C4244: 'fonction' : conversion de 'float' en 'int', perte possible de données
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(170,27): warning C4244: 'fonction' : conversion de 'float' en 'int', perte possible de données
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(171,23): warning C4244: 'fonction' : conversion de 'float' en 'int', perte possible de données
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(171,27): warning C4244: 'fonction' : conversion de 'float' en 'int', perte possible de données
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(162,18): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(163,18): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(229,31): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(331,31): warning C4020: 'Vec3_Abs' : paramètres réels trop nombreux
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(297,10): warning C4101: 'reflect' : variable locale non référencée
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(397,39): warning C4020: 'Vec3_Abs' : paramètres réels trop nombreux
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(422,10): warning C4101: 'normal' : variable locale non référencée
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\Shader.c(417,10): warning C4101: 'lightVector' : variable locale non référencée
+  Tools.c
+  Vector.c
+  Window.c
+  main.c
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\main.c(121,35): warning C4305: '-=' : troncation de 'double' à 'float'
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\main.c(64,10): warning C4101: 'meshCenter' : variable locale non référencée
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\main.c(96,10): warning C4101: 'maxLight' : variable locale non référencée
+D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\RealTimeRendering\main.c(191,26): warning C4101: 'meshCenter' : variable locale non référencée
+  Génération de code en cours...
+  LINK : D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\Bin\RealTimeRendering.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
+  RealTimeRendering.vcxproj -> D:\Etudes\ESIEA\A2\MATH ALGEBRE\S1\TP RENDUE 3D\FinalProject\RealTimeRendering_Basecode\Bin\RealTimeRendering.exe
