@@ -4,8 +4,8 @@
 #include "Settings.h"
 #include "Timer.h"
 
-//#define _FULLSCREEN
-//#define _FHD
+#define _FULLSCREEN
+#define _FHD
 
 #ifdef _FHD
 #define WINDOW_WIDTH  1920

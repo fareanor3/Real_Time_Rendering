@@ -10,12 +10,13 @@ All, whithout the use of any external libraries like OpenGL or DirectX.
 
 - ![Image](https://github.com/fareanor3/Real_Time_Rendering/blob/630cb2ebfc0e0624ae7770502386cf66a00015dc/2024-01-11%2016_37_58-Real-Time%20Rendering.png)
 
-## Buttons
+## Buttons ( in azerty )
 
 - N: Displays mode without shaders
 - , : Displays mode with Normal Mapping on Blinn-Phong
 - B: Displays Bling-Phong mode
-- T: Cell Shading
+- T: Cell Shading with small Perlin Noise ( to upgrade )
+- M: Swith the mesh
 - Space: Auto camera rotation mode
 - Left click: manual camera rotation mode
 - Right click: light rotation
@@ -34,7 +35,12 @@ All, whithout the use of any external libraries like OpenGL or DirectX.
 - Caching of normals, tangents and bitangents to avoid recalculating them each time ( x2 fps )
 - Optimisation of a * b + c calculations by float using the fmaf function ( + 4fps without shaders) in the math.h library
 
+## TODO
+
+Update de depth of clipping plane on the object
+
 ## Authors
 
 - [@fareanor3](https://github.com/fareanor3)
 - Special thanks to my friends for their assistance in optimizing the calculations ^^
+- And to my teachers for code, courses, advices and support

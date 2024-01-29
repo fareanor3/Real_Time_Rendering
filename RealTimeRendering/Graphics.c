@@ -64,16 +64,12 @@ void Graphics_RenderObject(
             // VERTEX SHADER
             out[j] = vertShader(&in[j], &vertGlobals);
 
-            // Clipping
+            // 
+
             clip = clip && Graphics_Clip(out[j].clipPos);
-
-            // Normal que j'ai ajouter 
-
         }
         if (clip)
-        {
             continue;
-        }
 
         if (!wireframe)
         {
@@ -169,6 +165,7 @@ void Graphics_RenderTriangle(
     VEC2_INIT_INTERPOLATION(vShaderO, textUV);
     VEC3_INIT_INTERPOLATION(vShaderO, normal);
     VEC3_INIT_INTERPOLATION(vShaderO, tangent);
+
 
     // Calcule la boîte englobante du triangle
     Vec2 lower = rasterVertices[0];

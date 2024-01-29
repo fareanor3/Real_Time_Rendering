@@ -31,7 +31,7 @@ typedef struct VShaderIn_s
     /// @brief Position de la tangente associ�e au sommet dans le r�f�rentiel objet.
     Vec3 tangent;
 
-    //J'ai rajouté ça pour les bonus
+    // J'ai rajouté ça pour les bonus
     Vec3 bitangent;
 
     /// @brief Coordonn�es uv associ�es au sommet.
@@ -54,14 +54,11 @@ typedef struct VShaderOut_s
     /// @brief Coordonn�es uv associ�es au sommet.
     Vec2 textUV;
 
-    // TODO
-    // Pour les bonus
-
     /// @brief Position du sommet dans le r�f�rentiel monde.
     Vec3 worldPos;
 
     /// @brief Tangente associ�e au sommet exprim�e dans le r�f�rentiel monde.
-    Vec3  tangent;
+    Vec3 tangent;
 
     /// @brief Bitangente associ�e au sommet exprim�e dans le r�f�rentiel monde.
     Vec3 bitangent;
@@ -92,9 +89,6 @@ typedef struct FShaderIn_s
 
     /// @brief Coordonn�es uv associ�es au pixel.
     Vec2 textUV;
-
-    // TODO
-    // Pour les bonus
 
     /// @brief Position associ�e au pixel exprim�e dans le r�f�rentiel monde.
     /// N�cessaire pour la lumi�re sp�culaire de Blinn-Phong

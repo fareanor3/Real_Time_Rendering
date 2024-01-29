@@ -110,9 +110,7 @@ Mat4 Mat4_Scale(Mat4 mat, float s)
     for (int i = 0; i < 4; ++i)
     {
         for (int j = 0; j < 4; ++j)
-        {
             mat.data[i][j] *= s;
-        }
     }
     return mat;
 }

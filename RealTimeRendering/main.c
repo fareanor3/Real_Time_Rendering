@@ -40,8 +40,8 @@ int main(int argc, char *argv[])
     if (!scene)
         goto ERROR_LABEL;
 
-    // mesh = Scene_CreateMeshFromOBJ(scene, "../Obj/Jaxy", "Jaxy.obj");
-    mesh = Scene_CreateMeshFromOBJ(scene, "../Obj/CaptainToad", "CaptainToad.obj");
+    mesh = Scene_CreateMeshFromOBJ(scene, "../Obj/Jaxy", "Jaxy.obj");
+    // mesh = Scene_CreateMeshFromOBJ(scene, "../Obj/CaptainToad", "CaptainToad.obj");
     if (!mesh)
         goto ERROR_LABEL;
 
@@ -101,9 +101,12 @@ int main(int argc, char *argv[])
 
     float fpsAccu = 0.0f;
     int frameCount = 0;
+    float LumAngle = 0.0f;
     bool quit = false;
     bool turn = false;
+    bool lumrotation = false;
     bool lCtrl = false;
+    bool MeshToad = false;
 
     while (!quit)
     {
@@ -163,6 +166,48 @@ int main(int argc, char *argv[])
                     Scene_SetDefaultFragmentShader(scene, FragmentShader_Base);
                     break;
 
+                case SDL_SCANCODE_P:
+                    Scene_SetDefaultFragmentShader(scene, FragmentShader_PerlinNoise);
+                    break;
+
+                case SDL_SCANCODE_L:
+                    lumrotation = !lumrotation;
+                    break;
+
+                case SDL_SCANCODE_SEMICOLON:
+                    if (!MeshToad)
+                    {
+                        mesh = Scene_CreateMeshFromOBJ(scene, "../Obj/Jaxy", "Jaxy.obj");
+                        MeshToad = !MeshToad;
+                    }
+                    else
+                    {
+                        mesh = Scene_CreateMeshFromOBJ(scene, "../Obj/CaptainToad", "CaptainToad.obj");
+                        MeshToad = !MeshToad;
+                    }
+
+                    if (!mesh)
+                        goto ERROR_LABEL;
+                    Vec3 meshCenter = mesh->m_center;
+                    Vec3 meshMin = mesh->m_min;
+                    Vec3 meshMax = mesh->m_max;
+                    float xSize = fabsf(meshMax.x - meshMin.x);
+                    float ySize = fabsf(meshMax.y - meshMin.y);
+                    float zSize = fabsf(meshMax.z - meshMin.z);
+                    float objectSize = fmaxf(xSize, fmaxf(ySize, zSize));
+                    if (!MeshToad)
+                        scale = 3.0f / objectSize;
+                    else
+                        scale = 9.0f;
+
+                    // Centre l'objet en (0,0,0) et applique l'échelle
+                    Mat4 objectTransform = Mat4_Identity;
+                    objectTransform = Mat4_GetTranslationMatrix(Vec3_Neg(mesh->m_center));
+                    objectTransform = Mat4_MulMM(Mat4_GetScaleMatrix(scale), objectTransform);
+                    Object_SetLocalTransform(object, objectTransform);
+                    Object_SetMesh(object, mesh);
+                    break;
+
                 case SDL_SCANCODE_SPACE:
                     turn = !turn;
                     break;
@@ -214,6 +259,13 @@ int main(int argc, char *argv[])
         // Calcule la rotation de la caméra
         if (turn)
             angleY -= 360.f / 10.f * Timer_GetDelta(g_time);
+
+        if (lumrotation)
+        {
+            // fait tourner la lumière au tour de l'objet
+            Scene_SetLightDirection(scene, Vec3_Set(cosf(LumAngle), sinf(LumAngle), 0.0f));
+            LumAngle += 360.f / 700.f * Timer_GetDelta(g_time);
+        }
 
         // Calcule la matrice locale de la caméra
         Mat4 cameraModel = Mat4_Identity;

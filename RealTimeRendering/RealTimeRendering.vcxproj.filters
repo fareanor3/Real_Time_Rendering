@@ -129,4 +129,7 @@
       <Filter>Fichiers sources\Utils</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
 </Project>
